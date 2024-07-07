@@ -1,38 +1,60 @@
 import React from 'react';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import Slider from 'react-slick';
+import { Box, Typography } from '@mui/material';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-const jewelImages = [
-    'jewel1.jpg', // Replace with actual image URLs or paths
-    'jewel2.jpg',
-    'jewel3.jpg'
+const images = [
+    '/images/jewel1.jpg',
+    '/images/jewel2.jpg',
+    '/images/jewel3.jpg'
 ];
 
-const LandingPage = () => {
+const Slideshow = () => {
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        arrows: false // Disable arrows to prevent additional width
+    };
+
     return (
-        <Box>
-            <Box sx={{ p: 5, textAlign: 'center', bgcolor: 'primary.main', color: 'white' }}>
-                <Typography variant="h2">Welcome to AuroraJewels</Typography>
-                <Typography variant="h6">Your one-stop shop for exquisite jewelry</Typography>
-            </Box>
-            <Container sx={{ mt: 5 }}>
-                <Grid container spacing={4}>
-                    {jewelImages.map((image, index) => (
-                        <Grid item xs={12} sm={6} md={4} key={index}>
-                            <Box
-                                component="img"
-                                src={image}
-                                alt={`Jewel ${index + 1}`}
-                                sx={{ width: '100%', borderRadius: 2 }}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container>
-        </Box>
+        <Slider {...settings}>
+            {images.map((image, index) => (
+                <Box key={index} sx={{ position: 'relative', height: '100vh' }}>
+                    <img
+                        src={image}
+                        alt={`Slide ${index}`}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            color: 'white',
+                            textAlign: 'center',
+                            bgcolor: 'rgba(0, 0, 0, 0.6)',
+                            padding: '20px',
+                            borderRadius: '8px'
+                        }}
+                    >
+                        <Typography variant="h2" component="div" sx={{ fontFamily: 'Great Vibes, cursive' }}>
+                            Aurora Jewels
+                        </Typography>
+                        <Typography variant="h6" component="div" sx={{ fontFamily: 'Roboto, sans-serif' }}>
+                            Your one-stop shop for exquisite jewelry
+                        </Typography>
+                    </Box>
+                </Box>
+            ))}
+        </Slider>
     );
 };
 
-export default LandingPage;
+export default Slideshow;

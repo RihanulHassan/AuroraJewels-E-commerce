@@ -1,38 +1,17 @@
-.App {
-  text-align: center;
+
+/* Ensure the body doesn't overlap with the header */
+body {
+  padding-top: 64px; /* Adjust this value to match your header's height */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Adjustments for the sticky header */
+.AppBar-root {
+  background-color: #282c34; /* Matches the AppBar background color */
+  color: white; /* Text color */
+  z-index: 1000; /* Ensure it's above other content */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Ensure content scrolls below the header */
+.main-content {
+  padding-top: 16px; /* Adjust as necessary */
 }

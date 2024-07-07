@@ -7,7 +7,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Header = () => {
     return (
-        <AppBar position="static">
+        <AppBar position="sticky" style={{ backgroundColor: '#282c34', zIndex: '1000' }}>
             <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     AuroraJewels
