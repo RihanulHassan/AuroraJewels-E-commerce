@@ -1,16 +1,15 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-const Header = () => {
+const Footer = () => {
     return (
-        <header className="bg-dark text-white p-3 text-center">
-            <h1>AuroraJewels</h1>
-            <div>
-                <FontAwesomeIcon icon={faShoppingCart} size="2x" />
-            </div>
-        </header>
+        <Box sx={{ bgcolor: 'text.secondary', p: 3, textAlign: 'center', color: 'white' }}>
+            <Typography variant="body2">
+                &copy; 2024 AuroraJewels. All rights reserved.
+            </Typography>
+        </Box>
     );
 };
 
-export default Header;
+export default Footer;

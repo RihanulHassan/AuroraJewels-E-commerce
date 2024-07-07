@@ -1,4 +1,8 @@
 import React from 'react';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 const jewelImages = [
     'jewel1.jpg', // Replace with actual image URLs or paths
@@ -8,21 +12,26 @@ const jewelImages = [
 
 const LandingPage = () => {
     return (
-        <div>
-            <section className="text-center p-5">
-                <h2>Welcome to AuroraJewels</h2>
-                <p>Your one-stop shop for exquisite jewelry</p>
-            </section>
-            <section className="container">
-                <div className="row">
+        <Box>
+            <Box sx={{ p: 5, textAlign: 'center', bgcolor: 'primary.main', color: 'white' }}>
+                <Typography variant="h2">Welcome to AuroraJewels</Typography>
+                <Typography variant="h6">Your one-stop shop for exquisite jewelry</Typography>
+            </Box>
+            <Container sx={{ mt: 5 }}>
+                <Grid container spacing={4}>
                     {jewelImages.map((image, index) => (
-                        <div className="col-md-4" key={index}>
-                            <img src={image} alt={`Jewel ${index + 1}`} className="img-fluid" />
-                        </div>
+                        <Grid item xs={12} sm={6} md={4} key={index}>
+                            <Box
+                                component="img"
+                                src={image}
+                                alt={`Jewel ${index + 1}`}
+                                sx={{ width: '100%', borderRadius: 2 }}
+                            />
+                        </Grid>
                     ))}
-                </div>
-            </section>
-        </div>
+                </Grid>
+            </Container>
+        </Box>
     );
 };
 

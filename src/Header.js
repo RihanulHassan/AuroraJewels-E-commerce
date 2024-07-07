@@ -1,15 +1,22 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Header = () => {
     return (
-        <header className="bg-dark text-white p-3 text-center">
-            <h1>AuroraJewels</h1>
-            <div>
-                <FontAwesomeIcon icon={faShoppingCart} size="2x" />
-            </div>
-        </header>
+        <AppBar position="static">
+            <Toolbar>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    AuroraJewels
+                </Typography>
+                <IconButton edge="end" color="inherit" aria-label="cart">
+                    <ShoppingCartIcon />
+                </IconButton>
+            </Toolbar>
+        </AppBar>
     );
 };
 
