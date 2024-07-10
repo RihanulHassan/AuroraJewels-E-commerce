@@ -1,6 +1,9 @@
 import React from 'react';
 import { Box, Typography, Button, Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const CustomLayout = () => {
   const items = [
@@ -12,37 +15,91 @@ const CustomLayout = () => {
     { id: 6, image: '/images/jewel6.jpg', link: '/page6' },
   ];
 
+  const firstTwoImages = [
+    { id: 1, image: '/images/jewel1.jpg', link: '/page1' },
+    { id: 2, image: '/images/jewel2.jpg', link: '/page2' },
+  ];
+
+  const secondTwoImages = [
+    { id: 3, image: '/images/jewel3.jpg', link: '/page3' },
+    { id: 4, image: '/images/jewel4.jpg', link: '/page4' },
+  ];
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+    pauseOnHover: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
+
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: 'block', right: '10px' }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: 'block', left: '10px' }}
+        onClick={onClick}
+      />
+    );
+  }
+
   return (
     <div>
-      {/* Existing Slideshow */}
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <Link to="/page1">
-            <Box
-              sx={{
-                height: '50vh',
-                backgroundImage: 'url(/images/jewel1.jpg)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                cursor: 'pointer',
-              }}
-            />
-          </Link>
-        </Grid>
-        <Grid item xs={12}>
-          <Link to="/page2">
-            <Box
-              sx={{
-                height: '50vh',
-                backgroundImage: 'url(/images/jewel2.jpg)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                cursor: 'pointer',
-              }}
-            />
-          </Link>
-        </Grid>
-      </Grid>
+      {/* First Slideshow */}
+      <Slider {...settings}>
+        {firstTwoImages.map((item) => (
+          <Box key={item.id}>
+            <Link to={item.link}>
+              <Box
+                sx={{
+                  height: '50vh',
+                  backgroundImage: `url(${item.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  cursor: 'pointer',
+                }}
+              />
+            </Link>
+          </Box>
+        ))}
+      </Slider>
+
+      {/* Second Slideshow */}
+      <Slider {...settings} style={{ marginTop: '20px' }}>
+        {secondTwoImages.map((item) => (
+          <Box key={item.id}>
+            <Link to={item.link}>
+              <Box
+                sx={{
+                  height: '50vh',
+                  backgroundImage: `url(${item.image})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  cursor: 'pointer',
+                }}
+              />
+            </Link>
+          </Box>
+        ))}
+      </Slider>
 
       <Box sx={{ textAlign: 'center', padding: '40px 20px' }}>
         <Typography variant="h2" sx={{ fontFamily: 'Great Vibes, cursive' }}>
